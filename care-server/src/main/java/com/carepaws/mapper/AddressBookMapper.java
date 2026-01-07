@@ -15,25 +15,35 @@ public interface AddressBookMapper {
     /**
      * 新增地址
      */
+    @Insert("insert into address_book" +
+            "        (user_id, consignee, phone, sex, province_code, province_name, city_code, city_name, district_code," +
+            "         district_name, detail, latitude, longitude, label, is_default, create_time, update_time)" +
+            "        values (#{userId}, #{consignee}, #{phone}, #{sex}, " +
+            "                #{provinceCode}, #{provinceName}, #{cityCode}, #{cityName},#{districtCode}, #{districtName}, " +
+            "                #{detail},#{latitude}, #{longitude}, #{label}, #{isDefault}, #{createTime}, #{updateTime})")
     void insert(AddressBook addressBook);
 
     /**
      * 根据id查询地址簿
      */
+    @Select("select * from address_book where id = #{id}")
     AddressBook getById(Long id);
 
     /**
-     * 根据id修改
+     * 根据id修改地址
      */
     void update(AddressBook addressBook);
 
     /**
-     * 根据id删除地址
-     */
-    void deleteById(Long id);
-
-    /**
      * 根据 用户id修改 是否默认地址
      */
+    @Update("update address_book set is_default = #{isDefault} where user_id = #{userId}")
     void updateIsDefaultByUserId(AddressBook addressBook);
+
+    /**
+     * 根据id删除地址
+     */
+    @Delete("delete from address_book where id = #{id}")
+    void deleteById(Long id);
+
 }

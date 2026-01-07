@@ -7,6 +7,7 @@ import com.carepaws.service.AddressBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,41 +17,56 @@ public class AddressBookServiceImpl implements AddressBookService {
     @Autowired
     private AddressBookMapper addressBookMapper;
 
+    /**
+     * 实现查询地址簿列表
+     */
     public List<AddressBook> list(AddressBook addressBook) {
-        // TODO:实现查询地址簿列表的逻辑
         return addressBookMapper.list(addressBook);
     }
 
+    /**
+     * 实现保存地址簿
+     */
     public void save(AddressBook addressBook) {
-        // TODO:实现保存地址簿的逻辑
+        addressBook.setUserId(BaseContext.getCurrentId());
+        addressBook.setIsDefault(0);
         addressBookMapper.insert(addressBook);
     }
 
-    public void update(AddressBook addressBook) {
-        // TODO:实现更新地址簿的逻辑
-        addressBookMapper.update(addressBook);
-    }
-
-    public void deleteById(Long id) {
-        // TODO：实现根据ID删除地址簿的逻辑
-        addressBookMapper.deleteById(id);
-    }
-
+    /**
+     * 实现根据id查询地址簿
+     */
     public AddressBook getById(Long id) {
-        // TODO:实现根据ID查询地址簿的逻辑
         return addressBookMapper.getById(id);
     }
 
-    @Override
+    /**
+     * 实现根据id更新地址簿
+     */
+    public void update(AddressBook addressBook) {
+        addressBookMapper.update(addressBook);
+    }
+
+    /**
+     * 实现设置默认地址簿
+     */
+    @Transactional
     public void setDefault(AddressBook addressBook) {
-        // TODO:实现设置默认地址簿的逻辑
         //1、将当前用户的所有地址修改为非默认地址 update address_book set is_default = ? where user_id = ?
-        addressBook.setIsDefault(0);
-        addressBook.setUserId(BaseContext.getCurrentId());
+        addressBook.setIsDefault(0);    // 将 isDefault 字段设为 0（非默认状态
+        addressBook.setUserId(BaseContext.getCurrentId());  // 获取当前登录用户的ID并设置到 AddressBook 对象
         addressBookMapper.updateIsDefaultByUserId(addressBook);
 
         //2、将当前地址改为默认地址 update address_book set is_default = ? where id = ?
         addressBook.setIsDefault(1);
         addressBookMapper.update(addressBook);
     }
+
+    /**
+     * 实现根据id删除地址簿
+     */
+    public void deleteById(Long id) {
+        addressBookMapper.deleteById(id);
+    }
+
 }
