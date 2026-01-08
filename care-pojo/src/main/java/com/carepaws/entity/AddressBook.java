@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 地址簿
@@ -71,8 +71,8 @@ public class AddressBook implements Serializable {
     private Integer isDefault;
 
     @Schema(description = "修改时间")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @Schema(description = "创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
 }

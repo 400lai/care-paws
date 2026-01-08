@@ -3,7 +3,6 @@ package com.carepaws.config;
 import com.carepaws.json.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -30,9 +29,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         // 设置自定义对象映射器
         converter.setObjectMapper(new JacksonObjectMapper());
-        // 将自定义消息转换器添加到容器中（优先级低于默认转换器）
-        // 这样SpringDoc可以使用默认的JSON序列化方式，而我们的API仍然可以使用自定义配置
-        converters.add(converter);
+        // 将自己的消息转换器添加到容器中（优先级最高）
+        converters.add(0, converter);
     }
 
 }

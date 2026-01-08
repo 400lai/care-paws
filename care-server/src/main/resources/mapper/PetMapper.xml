@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.carepaws.mapper.PetMapper">
+
+    <!-- 条件查询宠物列表 -->
+    <select id="list" parameterType="com.carepaws.entity.Pet" resultType="com.carepaws.entity.Pet">
+        select * from pet
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <!-- 保存宠物档案 -->
+    <insert id="save" parameterType="com.carepaws.entity.Pet" useGeneratedKeys="true" keyProperty="id">
+        insert into pet (
+            user_id, nickname, type, breed, gender, age, weight, avatar, description, create_time, update_time
+        ) values (
+            #{userId}, #{nickname}, #{type}, #{breed}, #{gender}, #{age}, #{weight}, #{avatar}, #{description}, #{createTime}, #{updateTime}
+        )
+    </insert>
+
+    <!-- 根据id查询宠物档案 -->
+    <select id="getById" parameterType="java.lang.Long" resultType="com.carepaws.entity.Pet">
+        select * from pet where id = #{id}
+    </select>
+
+    <!-- 修改宠物档案 -->
+    <update id="update" parameterType="com.carepaws.entity.Pet">
+        update pet
+        <set>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="breed != null">
+                breed = #{breed},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="weight != null">
+                weight = #{weight},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 删除宠物档案 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from pet where id = #{id}
+    </delete>
+
+</mapper>
