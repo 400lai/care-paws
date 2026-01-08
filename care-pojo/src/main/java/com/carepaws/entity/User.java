@@ -1,5 +1,6 @@
 package com.carepaws.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,30 +13,47 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "C端用户信息表")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Schema(description = "主键，自增")
     private Long id;
 
-    //微信用户唯一标识
+    @Schema(description = "微信用户的唯一标识")
     private String openid;
 
-    //姓名
-    private String name;
+    @Schema(description = "昵称")
+    private String nickname;
 
-    //手机号
+    @Schema(description = "手机号")
     private String phone;
 
-    //性别 0 女 1 男
+    @Schema(description = "性别：0未知，1男生，2女生")
     private String sex;
 
-    //身份证号
+    @Schema(description = "年龄")
+    private Integer age;
+
+    @Schema(description = "省份编码")   // 如11=北京,50=重庆，32=江苏
+    private String provinceCode;
+
+    @Schema(description = "城市编码")
+    private String cityCode;
+
+    @Schema(description = "区县编码")   // 如110108=海淀区，320102=玄武区
+    private String districtCode;
+
+    @Schema(description = "个人简介")
+    private String introduction;
+
+    @Schema(description = "身份证号")
     private String idNumber;
 
-    //头像
+    @Schema(description = "微信用户头像路径")
     private String avatar;
 
-    //注册时间
+    @Schema(description = "注册时间")
     private LocalDateTime createTime;
 }

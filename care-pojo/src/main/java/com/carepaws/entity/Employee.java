@@ -1,5 +1,6 @@
 package com.carepaws.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "员工信息表")
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;

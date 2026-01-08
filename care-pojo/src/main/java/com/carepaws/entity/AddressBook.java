@@ -25,13 +25,13 @@ public class AddressBook implements Serializable {
     // 主键
     private Long id;
 
-    //用户id
+    @Schema(description = "用户id")
     private Long userId;
 
-    //收货人
+    @Schema(description = "收货人")
     private String consignee;
 
-    //手机号
+    @Schema(description = "手机号")
     private String phone;
 
     //性别 0 男 1 女
