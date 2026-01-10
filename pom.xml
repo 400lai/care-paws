@@ -29,7 +29,7 @@
 		<druid>1.2.23</druid>
 		<pagehelper>1.4.7</pagehelper>
 		<aliyun.sdk.oss>3.17.4</aliyun.sdk.oss>
-		<knife4j>4.4.0</knife4j>
+		<knife4j>4.5.0</knife4j>
 		<aspectj>1.9.22</aspectj>
 		<jjwt>0.9.1</jjwt>
 		<jaxb-api>2.3.1</jaxb-api>

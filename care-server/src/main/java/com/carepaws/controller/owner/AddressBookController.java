@@ -96,14 +96,15 @@ public class AddressBookController {
         //SQL:select * from address_book where user_id = ? and is_default = 1
         AddressBook addressBook = new AddressBook();
         addressBook.setUserId(BaseContext.getCurrentId());
-        addressBook.setIsDefault(1);
+        addressBook.setIsDefault((byte) 1); // 修改这里，使用byte类型
         List<AddressBook> list = addressBookService.list(addressBook);
 
-        if (list != null || list.size() == 1) {
+        if (list != null && list.size() == 1) { // 同时修正逻辑错误：应该是&&而不是||
             return Result.success(list.get(0));
         }
 
         return Result.error("没有查询到默认地址");
     }
+
 
 }

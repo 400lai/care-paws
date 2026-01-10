@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -22,57 +23,52 @@ public class AddressBook implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    // 主键
+    @Schema(description = "主键")
     private Long id;
 
-    @Schema(description = "用户id")
+    @Schema(description = "用户ID")
     private Long userId;
 
     @Schema(description = "收货人")
     private String consignee;
 
+    @Schema(description = "性别：1男 2女") // 1男 2女
+    private Byte sex;
+
     @Schema(description = "手机号")
     private String phone;
 
-    //性别 0 男 1 女
-    private String sex;
-
-    //省级区划编号
+    @Schema(description = "省级区划编号")
     private String provinceCode;
 
-    //省级名称
+    @Schema(description = "省份名称")
     private String provinceName;
 
-    //市级区划编号
+    @Schema(description = "市级区划编号")
     private String cityCode;
 
-    //市级名称
+    @Schema(description = "市级名称")
     private String cityName;
 
-    //区级区划编号
+    @Schema(description = "区级区划编号")
     private String districtCode;
 
-    //区级名称
+    @Schema(description = "区县名称")
     private String districtName;
 
-    //详细地址
+    @Schema(description = "详细地址（门牌号）")
     private String detail;
 
-    @Schema(description = "经度")
-    private String longitude;
-
     @Schema(description = "纬度")
-    private String latitude;
+    private BigDecimal latitude;
 
-    //标签 1公司 2家 3学校 4其他
-    private String label;
+    @Schema(description = "经度")
+    private BigDecimal longitude;
 
-    //是否默认 0否 1是
-    private Integer isDefault;
+    @Schema(description = "标签（1公司/2家/3学校 4其他）")    //标签 1公司 2家 3学校 4其他
+    private Byte label;
 
-    @Schema(description = "修改时间")
-    private LocalDateTime updateTime;
+    @Schema(description = "是否默认地址（1-是，0-否）")
+    private Byte isDefault;
 
-    @Schema(description = "创建时间")
-    private LocalDateTime createTime;
 }

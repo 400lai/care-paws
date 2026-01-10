@@ -29,7 +29,7 @@ public class AddressBookServiceImpl implements AddressBookService {
      */
     public void save(AddressBook addressBook) {
         addressBook.setUserId(BaseContext.getCurrentId());
-        addressBook.setIsDefault(0);
+        addressBook.setIsDefault((byte) 0); // 修改为byte类型
         addressBookMapper.insert(addressBook);
     }
 
@@ -53,12 +53,12 @@ public class AddressBookServiceImpl implements AddressBookService {
     @Transactional
     public void setDefault(AddressBook addressBook) {
         //1、将当前用户的所有地址修改为非默认地址 update address_book set is_default = ? where user_id = ?
-        addressBook.setIsDefault(0);    // 将 isDefault 字段设为 0（非默认状态
+        addressBook.setIsDefault((byte) 0);    // 修改为byte类型
         addressBook.setUserId(BaseContext.getCurrentId());  // 获取当前登录用户的ID并设置到 AddressBook 对象
         addressBookMapper.updateIsDefaultByUserId(addressBook);
 
         //2、将当前地址改为默认地址 update address_book set is_default = ? where id = ?
-        addressBook.setIsDefault(1);
+        addressBook.setIsDefault((byte) 1);   // 修改为byte类型
         addressBookMapper.update(addressBook);
     }
 

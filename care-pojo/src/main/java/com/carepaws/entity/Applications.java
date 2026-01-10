@@ -13,35 +13,44 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "宠托师认证申请表")
+@Schema(description = "申请认证表（喂养员实名认证）")
 public class Applications implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "主键，自增")
+    @Schema(description = "认证ID（主键）")
     private Long id;
 
-    @Schema(description = "用户ID，关联user表")
+    @Schema(description = "关联用户ID")
     private Long userId;
 
-    @Schema(description = "身份证号")
+    @Schema(description = "身份证号（实名认证用）")
     private String idNumber;
 
-    @Schema(description = "身份证正面照片路径")
+    @Schema(description = "身份证正面照URL")
     private String idFrontPhoto;
 
-    @Schema(description = "身份证反面照片路径")
+    @Schema(description = "身份证反面照URL")
     private String idBackPhoto;
 
-    @Schema(description = "审核状态：0待审核，1通过，2拒绝")
-    private Integer status;
+    @Schema(description = "技能标签（如“擅长大型犬遛狗”）")
+    private String skill;
 
     @Schema(description = "申请时间")
     private LocalDateTime applyTime;
 
+    @Schema(description = "审核状态（1-审核中，2-审核通过，3-审核驳回）")
+    private Integer status;
+
+    @Schema(description = "驳回原因")
+    private String rejectReason;
+
     @Schema(description = "审核时间")
     private LocalDateTime auditTime;
 
-    @Schema(description = "审核备注，拒绝时填写原因")
-    private String auditRemark;
+    @Schema(description = "审核管理员")
+    private String auditAdmin;
+
+    @Schema(description = "更新时间")
+    private LocalDateTime updateTime;
 }

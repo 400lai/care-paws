@@ -31,9 +31,6 @@ public class PetServiceImpl implements PetService {
     public void save(Pet pet) {
         // 设置当前登录用户ID
         pet.setUserId(BaseContext.getCurrentId());
-        // 设置时间戳
-        pet.setCreateTime(LocalDateTime.now());
-        pet.setUpdateTime(LocalDateTime.now());
         // 保存宠物档案
         petMapper.save(pet);
     }
@@ -49,8 +46,6 @@ public class PetServiceImpl implements PetService {
      * 修改宠物档案
      */
     public void update(Pet pet) {
-        // 设置更新时间戳
-        pet.setUpdateTime(LocalDateTime.now());
         // 修改宠物档案
         petMapper.update(pet);
     }

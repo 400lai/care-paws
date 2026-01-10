@@ -25,14 +25,20 @@ public class PetSistter implements Serializable {
     @Schema(description = "用户ID，关联user表，唯一")
     private Long userId;
 
-    @Schema(description = "余额")
+    @Schema(description = "累计收益（元）")
     private BigDecimal balance;
+
+    @Schema(description = "保证金（元）")
+    private BigDecimal deposit;
 
     @Schema(description = "订单数量")
     private Integer orderCount;
 
-    @Schema(description = "评分，满分5.0")
-    private BigDecimal rating;
+    @Schema(description = "服务评分，满分5.0")
+    private BigDecimal serviceScore;
+
+    @Schema(description = "接单状态（0-不接单，1-可接单）")
+    private Byte receiveOrderStatus;
 
     @Schema(description = "更新时间")
     private LocalDateTime updateTime;
