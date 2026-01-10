@@ -43,6 +43,15 @@ public class OrderDetail implements Serializable {
     @Schema(description = "该项小计（单价×数量）")
     private BigDecimal subTotal;
 
+    @Schema(description = "该服务项是否完成（0-未完成，1-已完成）")
+    private Byte isCompleted;
+
+    @Schema(description = "服务项完成时间")
+    private LocalDateTime completeTime;
+
     @Schema(description = "创建时间")
     private LocalDateTime createTime;
+
+    @Schema(description = "更新时间")
+    private LocalDateTime updateTime;
 }

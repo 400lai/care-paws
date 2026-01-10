@@ -26,7 +26,13 @@ public class PetSistter implements Serializable {
     private Long userId;
 
     @Schema(description = "累计收益（元）")
-    private BigDecimal balance;
+    private BigDecimal totalIncome;
+
+    @Schema(description = "可提现余额（元）")
+    private BigDecimal availableBalance;
+
+    @Schema(description = "冻结余额（提现中/待结算）")
+    private BigDecimal frozenBalance;
 
     @Schema(description = "保证金（元）")
     private BigDecimal deposit;
@@ -34,7 +40,7 @@ public class PetSistter implements Serializable {
     @Schema(description = "订单数量")
     private Integer orderCount;
 
-    @Schema(description = "服务评分，满分5.0")
+    @Schema(description = "服务评分（0.0-5.0）")
     private BigDecimal serviceScore;
 
     @Schema(description = "接单状态（0-不接单，1-可接单）")

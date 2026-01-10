@@ -40,7 +40,7 @@ public class Applications implements Serializable {
     private LocalDateTime applyTime;
 
     @Schema(description = "审核状态（1-审核中，2-审核通过，3-审核驳回）")
-    private Integer status;
+    private Byte auditStatus;
 
     @Schema(description = "驳回原因")
     private String rejectReason;

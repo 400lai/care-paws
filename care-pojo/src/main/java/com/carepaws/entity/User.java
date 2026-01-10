@@ -40,11 +40,11 @@ public class User implements Serializable {
     @Schema(description = "年龄")
     private Integer age;
 
-    @Schema(description = "当前身份（1-普通用户，2-喂养员）")
+    @Schema(description = "当前身份（1-普通用户，2-宠托师）")
     private Byte identityType;
 
-    @Schema(description = "喂养员申请状态（0-未申请，1-审核中，2-审核通过，3-审核驳回）")
-    private Byte applyStaffStatus;
+    @Schema(description = "宠托师申请状态（0-未申请，1-审核中，2-审核通过，3-审核驳回）")
+    private Byte applySitterStatus;
 
     @Schema(description = "省份编码")   // 如11=北京,50=重庆，32=江苏
     private String provinceCode;

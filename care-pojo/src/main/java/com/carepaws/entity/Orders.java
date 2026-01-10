@@ -44,7 +44,7 @@ public class Orders implements Serializable {
     @Schema(description = "订单编号（唯一）")
     private String orderNo;
 
-    @Schema(description = "订单状态（1-待付款，2-待接单，3-待上门，4-进行中，5-已完成，6-已取消）")
+    @Schema(description = "订单状态（1-待付款，2-待接单，3-待上门，4-服务中，5-宠托师已完成，6-用户已确认（订单结束），7-已取消）")
     private Byte status;
 
     @Schema(description = "下单用户ID")
@@ -66,7 +66,7 @@ public class Orders implements Serializable {
     private LocalDateTime expectTime;
 
     @Schema(description = "期望人员性别（0-不限，1-男，2-女）")
-    private Byte expectStaffGender;
+    private Byte expectSitterGender;
 
     @Schema(description = "服务叮嘱")
     private String serviceRemark;

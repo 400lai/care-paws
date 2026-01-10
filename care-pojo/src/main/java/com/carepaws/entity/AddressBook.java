@@ -65,8 +65,8 @@ public class AddressBook implements Serializable {
     @Schema(description = "经度")
     private BigDecimal longitude;
 
-    @Schema(description = "标签（1公司/2家/3学校 4其他）")    //标签 1公司 2家 3学校 4其他
-    private Byte label;
+    @Schema(description = "标签（公司/家/学校）")
+    private String label;
 
     @Schema(description = "是否默认地址（1-是，0-否）")
     private Byte isDefault;

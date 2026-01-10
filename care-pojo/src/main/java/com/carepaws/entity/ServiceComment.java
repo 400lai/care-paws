@@ -27,8 +27,8 @@ public class ServiceComment implements Serializable {
     @Schema(description = "评价用户ID（普通用户）")
     private Long userId;
 
-    @Schema(description = "被评价喂养员ID")
-    private Long staffId;
+    @Schema(description = "被评价宠托师ID")
+    private Long sitterId;
 
     @Schema(description = "评分（1-5分）")
     private Byte score;
